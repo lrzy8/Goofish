@@ -1,0 +1,15 @@
+node_modules
+frontend/node_modules
+dist
+frontend/dist
+public
+data
+logs
+.git
+.github
+docs/.vitepress/cache
+docs/.vitepress/dist
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store

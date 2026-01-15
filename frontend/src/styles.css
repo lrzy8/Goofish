@@ -1,0 +1,285 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* ========================================
+   少女粉主题 - Pink Theme
+   ======================================== */
+
+[data-theme="pink"] {
+    --p: 340 90% 70%; /* 主色：少女粉 */
+    --pf: 340 90% 60%; /* 主色聚焦 */
+    --pc: 0 0% 100%; /* 主色文本 */
+    --s: 320 80% 75%; /* 次要色：淡粉 */
+    --sf: 320 80% 65%;
+    --sc: 0 0% 100%;
+    --a: 300 70% 80%; /* 强调色：浅粉 */
+    --af: 300 70% 70%;
+    --ac: 0 0% 100%;
+    --n: 340 30% 95%; /* 中性色：浅粉灰 */
+    --nf: 340 30% 90%;
+    --nc: 340 20% 30%;
+    --b1: 0 0% 100%; /* 背景1：纯白 */
+    --b2: 340 20% 98%; /* 背景2：极浅粉 */
+    --b3: 340 15% 96%; /* 背景3：浅粉 */
+    --bc: 340 20% 25%; /* 基础内容：深灰 */
+    --in: 200 100% 50%;
+    --inc: 0 0% 100%;
+    --su: 160 100% 40%;
+    --suc: 0 0% 100%;
+    --wa: 40 100% 50%;
+    --wac: 0 0% 100%;
+    --er: 0 100% 50%;
+    --erc: 0 0% 100%;
+    --rounded-box: 1rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 1.9rem;
+    --animation-btn: 0.25s;
+    --animation-input: 0.2s;
+    --btn-focus-scale: 0.95;
+    --border-btn: 1px;
+    --tab-border: 1px;
+    --tab-radius: 0.5rem;
+}
+
+[data-theme="pink-dark"] {
+    --p: 340 85% 65%; /* 主色：深粉 */
+    --pf: 340 85% 55%;
+    --pc: 0 0% 100%;
+    --s: 320 75% 70%;
+    --sf: 320 75% 60%;
+    --sc: 0 0% 100%;
+    --a: 300 65% 75%;
+    --af: 300 65% 65%;
+    --ac: 0 0% 100%;
+    --n: 340 25% 20%; /* 中性色：深灰粉 */
+    --nf: 340 25% 15%;
+    --nc: 340 20% 85%;
+    --b1: 340 30% 12%; /* 背景1：深粉灰 */
+    --b2: 340 30% 15%; /* 背景2：深粉 */
+    --b3: 340 30% 18%; /* 背景3：更深粉 */
+    --bc: 340 20% 85%; /* 基础内容：浅色 */
+    --in: 200 100% 50%;
+    --inc: 0 0% 100%;
+    --su: 160 100% 40%;
+    --suc: 0 0% 100%;
+    --wa: 40 100% 50%;
+    --wac: 0 0% 100%;
+    --er: 0 100% 50%;
+    --erc: 0 0% 100%;
+    --rounded-box: 1rem;
+    --rounded-btn: 0.5rem;
+    --rounded-badge: 1.9rem;
+    --animation-btn: 0.25s;
+    --animation-input: 0.2s;
+    --btn-focus-scale: 0.95;
+    --border-btn: 1px;
+    --tab-border: 1px;
+    --tab-radius: 0.5rem;
+}
+
+/* ========================================
+   设计令牌 - Design Tokens
+   ======================================== */
+
+:root {
+    /* 圆角 */
+    --radius-sm: 0.375rem;
+    /* 6px */
+    --radius-md: 0.5rem;
+    /* 8px */
+    --radius-lg: 0.75rem;
+    /* 12px */
+    --radius-xl: 1rem;
+    /* 16px */
+
+    /* 阴影 */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    /* 间距 */
+    --spacing-page: 1rem;
+    --spacing-card: 1rem;
+    --spacing-section: 1.5rem;
+
+    /* 响应式断点对应的间距 */
+    --gap-grid: 1rem;
+}
+
+@media (min-width: 640px) {
+    :root {
+        --spacing-page: 1.5rem;
+        --spacing-card: 1.25rem;
+        --gap-grid: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --spacing-page: 1.5rem;
+        --spacing-card: 1.5rem;
+        --gap-grid: 1.5rem;
+    }
+}
+
+/* ========================================
+   全局组件样式覆盖
+   ======================================== */
+
+/* 统一卡片样式 */
+.card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.card-body {
+    padding: var(--spacing-card);
+}
+
+/* 统一按钮圆角 */
+.btn {
+    border-radius: var(--radius-md);
+}
+
+.btn-circle {
+    border-radius: 9999px;
+}
+
+/* 统一输入框样式 */
+.input,
+.select,
+.textarea {
+    border-radius: var(--radius-md);
+}
+
+/* 统一徽章样式 */
+.badge {
+    border-radius: var(--radius-sm);
+}
+
+/* 统一头像样式 */
+.avatar>div {
+    border-radius: var(--radius-lg);
+}
+
+.avatar .rounded-full {
+    border-radius: 9999px;
+}
+
+/* 统一表格样式 */
+.table {
+    border-radius: var(--radius-lg);
+}
+
+/* 统一 alert 样式 */
+.alert {
+    border-radius: var(--radius-md);
+}
+
+/* 统一 toggle 样式 */
+.toggle {
+    border-radius: 9999px;
+}
+
+/* 统一 join 样式 */
+.join .btn:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.join .btn:last-child {
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
+/* ========================================
+   页面容器样式
+   ======================================== */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-grid);
+}
+
+/* ========================================
+   响应式网格系统
+   ======================================== */
+
+.grid-responsive {
+    display: grid;
+    gap: var(--gap-grid);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .grid-responsive-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-responsive-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-responsive-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========================================
+   工具类
+   ======================================== */
+
+/* 文本截断 */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 滚动容器 */
+.scroll-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: oklch(var(--bc) / 0.2);
+    border-radius: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--bc) / 0.3);
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-hover:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* 列表项悬停 */
+.list-item-hover {
+    border-radius: var(--radius-md);
+    transition: background-color 0.15s ease;
+}
+
+.list-item-hover:hover {
+    background-color: oklch(var(--b2));
+}

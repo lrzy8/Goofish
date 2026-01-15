@@ -1,0 +1,7 @@
+<div class="stat bg-base-100 rounded-box shadow">
+    <div class="stat-figure" [class]="'text-' + color()">
+        <lucide-icon [img]="icon()" class="w-8 h-8"></lucide-icon>
+    </div>
+    <div class="stat-title">{{ label() }}</div>
+    <div class="stat-value" [class]="'text-' + color()">{{ value() }}</div>
+</div>

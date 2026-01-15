@@ -1,0 +1,7 @@
+<div class="desktop-layout" [class.sidebar-collapsed]="sidebarCollapsed()">
+    <app-sidebar [currentView]="currentView()" (viewChange)="onViewChange($event)"
+        (collapsedChange)="onSidebarCollapse($event)" />
+
+    <app-topbar [title]="pageTitle()" [sidebarCollapsed]="sidebarCollapsed()" [activeCount]="activeCount()"
+        [messageCount]="messageCount()" />
+</div>

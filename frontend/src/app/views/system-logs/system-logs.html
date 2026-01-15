@@ -1,0 +1,118 @@
+<div class="page-container">
+    <!-- 工具栏 -->
+    <div class="card bg-base-100 shadow-sm">
+        <div class="card-body p-4">
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- 模式切换 -->
+                <div class="join">
+                    <button class="join-item btn btn-sm" [class.btn-active]="mode() === 'current'"
+                        (click)="setMode('current')">
+                        <lucide-icon [img]="icons.Radio" class="w-4 h-4"></lucide-icon>
+                        实时日志
+                    </button>
+                    <button class="join-item btn btn-sm" [class.btn-active]="mode() === 'history'"
+                        (click)="setMode('history')">
+                        <lucide-icon [img]="icons.History" class="w-4 h-4"></lucide-icon>
+                        历史日志
+                    </button>
+                </div>
+
+                <!-- 等级筛选 -->
+                <select class="select select-sm select-bordered" [(ngModel)]="levelFilter"
+                    (ngModelChange)="onLevelChange()">
+                    @for (level of levels; track level) {
+                    <option [value]="level">{{ level === 'ALL' ? '全部等级' : level }}</option>
+                    }
+                </select>
+
+                <!-- 历史日志选择器 -->
+                @if (mode() === 'history') {
+                <select class="select select-sm select-bordered" [ngModel]="selectedDate()"
+                    (ngModelChange)="selectDate($event)">
+                    <option [ngValue]="null" disabled>选择日期</option>
+                    @for (date of dates(); track date) {
+                    <option [value]="date">{{ date }}</option>
+                    }
+                </select>
+
+                @if (files().length > 0) {
+                <select class="select select-sm select-bordered" [ngModel]="selectedFile()"
+                    (ngModelChange)="selectFile($event)">
+                    <option [ngValue]="null" disabled>选择日志文件</option>
+                    @for (file of files(); track file.name) {
+                    <option [value]="file.name">{{ formatFileTime(file.name) }} ({{ formatFileSize(file.size) }})
+                    </option>
+                    }
+                </select>
+                }
+                }
+
+                <div class="flex-1"></div>
+
+                <!-- 自动刷新 -->
+                @if (mode() === 'current') {
+                <label class="label cursor-pointer gap-2">
+                    <span class="label-text text-sm">自动刷新</span>
+                    <input type="checkbox" class="toggle toggle-sm toggle-primary" [checked]="autoRefresh()"
+                        (change)="toggleAutoRefresh()" />
+                </label>
+                }
+
+                <!-- 刷新按钮 -->
+                <button class="btn btn-sm btn-ghost" (click)="refresh()" [disabled]="loading()">
+                    <lucide-icon [img]="icons.RefreshCw" class="w-4 h-4" [class.animate-spin]="loading()"></lucide-icon>
+                </button>
+            </div>
+
+            <!-- 当前文件信息 -->
+            @if (mode() === 'current' && currentFile()) {
+            <div class="text-xs text-base-content/50 mt-2">
+                当前日志: {{ currentDate() }}/{{ currentFile() }} · {{ displayLogs().length }} 条记录
+            </div>
+            }
+        </div>
+    </div>
+
+    <!-- 日志内容 -->
+    <div class="card bg-base-100 shadow-sm">
+        <div class="card-body p-4">
+            @if (loading() && displayLogs().length === 0) {
+            <div class="flex justify-center py-8">
+                <span class="loading loading-spinner loading-md"></span>
+            </div>
+            } @else if (displayLogs().length === 0) {
+            <div class="text-center py-8 text-base-content/60">
+                <lucide-icon [img]="icons.FileText" class="w-12 h-12 mx-auto mb-2 opacity-30"></lucide-icon>
+                @if (mode() === 'history' && !selectedFile()) {
+                <p>请选择日期和日志文件</p>
+                } @else {
+                <p>暂无日志记录</p>
+                }
+            </div>
+            } @else {
+            <div class="log-container overflow-x-auto">
+                <table class="table table-xs font-mono">
+                    <thead>
+                        <tr>
+                            <th class="w-40">时间</th>
+                            <th class="w-16">等级</th>
+                            <th class="w-28">模块</th>
+                            <th>消息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (log of displayLogs(); track log.raw) {
+                        <tr class="hover">
+                            <td class="text-base-content/60">{{ log.time }}</td>
+                            <td [class]="getLevelClass(log.level)">{{ log.level }}</td>
+                            <td class="text-base-content/70">{{ log.module }}</td>
+                            <td class="whitespace-pre-wrap break-all">{{ log.message }}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            }
+        </div>
+    </div>
+</div>
