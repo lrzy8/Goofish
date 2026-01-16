@@ -6,6 +6,7 @@
 #
 
 FROM node:20-bookworm-slim AS build
+RUN apt-get update && apt-get install -y python3 make gcc g++ && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Root deps
