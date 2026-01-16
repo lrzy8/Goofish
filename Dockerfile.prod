@@ -3,6 +3,10 @@
 
 FROM node:20-bookworm-slim AS builder
 
+# Use domestic mirrors for apt sources
+RUN sed -i 's|http://deb.debian.org|http://mirrors.ustc.edu.cn|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org|http://mirrors.ustc.edu.cn/debian-security|g' /etc/apt/sources.list
+
 # Install build tools
 RUN apt-get update && \
     apt-get install -y python3 make gcc g++ && \
@@ -35,6 +39,10 @@ COPY --from=0 /app/frontend/dist/frontend/browser /app/public
 
 # Production runtime stage
 FROM node:20-bookworm-slim AS runtime
+
+# Use domestic mirrors for apt sources
+RUN sed -i 's|http://deb.debian.org|http://mirrors.ustc.edu.cn|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org|http://mirrors.ustc.edu.cn/debian-security|g' /etc/apt/sources.list
 
 # Install production build tools temporarily
 RUN apt-get update && \
