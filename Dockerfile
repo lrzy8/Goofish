@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Root deps
 COPY package*.json ./
-RUN npm ci
+RUN npm install --no-audit --no-fund --verbose
 
 # Frontend deps & build
 COPY frontend/package*.json ./frontend/
@@ -35,7 +35,7 @@ ENV PORT=3000
 
 # Only prod deps
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --production --no-audit --no-fund --verbose
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/public ./public
