@@ -28,6 +28,7 @@ RUN node -e "const fs=require('fs');const path=require('path');function copyDir(
 
 
 FROM node:20-bookworm-slim AS runtime
+RUN apt-get update && apt-get install -y python3 make gcc g++ && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
