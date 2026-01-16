@@ -14,7 +14,7 @@ RUN npm install --no-audit --no-fund --verbose
 
 # Frontend deps & build
 COPY frontend/package*.json ./frontend/
-RUN cd frontend && npm ci
+RUN cd frontend && npm install --no-audit --no-fund --verbose
 COPY frontend ./frontend
 RUN cd frontend && npm run build
 
