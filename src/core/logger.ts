@@ -17,32 +17,44 @@ export function setLogLevel(level: LogLevel) {
 }
 
 function formatTime(): string {
+    // 使用上海时区
     const now = new Date()
-    const y = now.getFullYear()
-    const m = String(now.getMonth() + 1).padStart(2, '0')
-    const d = String(now.getDate()).padStart(2, '0')
-    const h = String(now.getHours()).padStart(2, '0')
-    const min = String(now.getMinutes()).padStart(2, '0')
-    const s = String(now.getSeconds()).padStart(2, '0')
+    const offset = 8 * 60 // 中国时区偏移（GMT+8）
+    const localTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offset * 60000)
+    
+    const y = localTime.getFullYear()
+    const m = String(localTime.getMonth() + 1).padStart(2, '0')
+    const d = String(localTime.getDate()).padStart(2, '0')
+    const h = String(localTime.getHours()).padStart(2, '0')
+    const min = String(localTime.getMinutes()).padStart(2, '0')
+    const s = String(localTime.getSeconds()).padStart(2, '0')
     return `${y}-${m}-${d} ${h}:${min}:${s}`
 }
 
 function getDateStr(): string {
+    // 使用上海时区
     const now = new Date()
-    const y = now.getFullYear()
-    const m = String(now.getMonth() + 1).padStart(2, '0')
-    const d = String(now.getDate()).padStart(2, '0')
+    const offset = 8 * 60 // 中国时区偏移（GMT+8）
+    const localTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offset * 60000)
+    
+    const y = localTime.getFullYear()
+    const m = String(localTime.getMonth() + 1).padStart(2, '0')
+    const d = String(localTime.getDate()).padStart(2, '0')
     return `${y}-${m}-${d}`
 }
 
 function getTimestampStr(): string {
+    // 使用上海时区
     const now = new Date()
-    const y = now.getFullYear()
-    const m = String(now.getMonth() + 1).padStart(2, '0')
-    const d = String(now.getDate()).padStart(2, '0')
-    const h = String(now.getHours()).padStart(2, '0')
-    const min = String(now.getMinutes()).padStart(2, '0')
-    const s = String(now.getSeconds()).padStart(2, '0')
+    const offset = 8 * 60 // 中国时区偏移（GMT+8）
+    const localTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offset * 60000)
+    
+    const y = localTime.getFullYear()
+    const m = String(localTime.getMonth() + 1).padStart(2, '0')
+    const d = String(localTime.getDate()).padStart(2, '0')
+    const h = String(localTime.getHours()).padStart(2, '0')
+    const min = String(localTime.getMinutes()).padStart(2, '0')
+    const s = String(localTime.getSeconds()).padStart(2, '0')
     return `${y}${m}${d}_${h}${min}${s}`
 }
 

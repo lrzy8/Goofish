@@ -14,7 +14,8 @@ export type ViewType =
     | 'workflow'
     | 'conversations'
     | 'logs'
-    | 'setting';
+    | 'setting'
+    | 'time-setting';
 
 const STORAGE_KEY = 'sidebar_collapsed';
 

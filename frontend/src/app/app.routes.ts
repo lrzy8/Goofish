@@ -94,6 +94,13 @@ export const routes: Routes = [
                     import('./views/system-setting/system-setting.component').then(
                         (m) => m.SystemSettingComponent
                     )
+            },
+            {
+                path: 'time-setting',
+                loadComponent: () =>
+                    import('./views/system-time-setting/system-time-setting.component').then(
+                        (m) => m.SystemTimeSettingComponent
+                    )
             }
         ]
     },

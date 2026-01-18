@@ -90,6 +90,13 @@
                 <span class="sidebar-menu-text">系统设置</span>
             </a>
         </li>
+        <li>
+            <a routerLink="/time-setting" routerLinkActive="active text-primary bg-primary/10" class="sidebar-menu-item"
+                (click)="setView('time-setting')">
+                <lucide-icon [img]="icons.Clock" class="sidebar-menu-icon"></lucide-icon>
+                <span class="sidebar-menu-text">时间设置</span>
+            </a>
+        </li>
     </ul>
 
     <!-- 底部收起按钮 -->

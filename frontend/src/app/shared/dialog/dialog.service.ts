@@ -42,4 +42,12 @@ export class DialogService {
         this.resolvePromise?.(result);
         this.resolvePromise = null;
     }
+    
+    showSuccess(message: string): Promise<boolean> {
+        return this.alert('成功', message);
+    }
+    
+    showError(message: string): Promise<boolean> {
+        return this.alert('错误', message);
+    }
 }
