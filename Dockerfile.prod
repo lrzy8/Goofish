@@ -1,7 +1,7 @@
 # GoofishCredentialsBot - Production Optimized Dockerfile
 # Multi-stage build optimized for production deployment
 
-FROM node:20-bookworm-slim AS builder
+FROM --platform=$BUILDPLATFORM node:20-bookworm-slim AS builder
 
 # Use domestic mirrors for apt sources
 RUN sed -i 's|http://deb.debian.org|http://mirrors.ustc.edu.cn|g' /etc/apt/sources.list && \
@@ -38,7 +38,7 @@ RUN npm run build
 COPY --from=0 /app/frontend/dist/frontend/browser /app/public
 
 # Production runtime stage
-FROM node:20-bookworm-slim AS runtime
+FROM --platform=$TARGETPLATFORM node:20-bookworm-slim AS runtime
 
 # Use domestic mirrors for apt sources
 RUN sed -i 's|http://deb.debian.org|http://mirrors.ustc.edu.cn|g' /etc/apt/sources.list && \
