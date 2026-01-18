@@ -14,5 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // 初始化主题
+    this.themeService; // 确保主题服务被初始化
   }
 }
