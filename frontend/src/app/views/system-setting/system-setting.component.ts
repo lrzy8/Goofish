@@ -19,6 +19,10 @@ export class SystemSettingComponent implements OnInit {
     readonly dialog = inject(DialogService);
     readonly icons = ICONS;
 
+    get currentTheme() {
+        return this.themeService.themeMode();
+    }
+
     aiSettings = signal<AISettings>({
         baseUrl: '',
         apiKey: '',

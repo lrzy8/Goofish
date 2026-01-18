@@ -69,6 +69,10 @@ RUN npm install --production --no-audit --no-fund
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 
+# Ensure timezone is properly configured in runtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+
 # Remove build tools (to reduce image size)
 RUN apt-get update && \
     apt-get remove -y python3 make gcc g++ && \

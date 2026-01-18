@@ -9,23 +9,23 @@
                     <span class="label-text font-medium">主题模式</span>
                 </label>
                 <div class="flex gap-2 flex-wrap">
-                    <button class="btn btn-sm" [class.btn-primary]="themeService.themeMode() === 'pink'"
-                        [class.btn-ghost]="themeService.themeMode() !== 'pink'" (click)="setTheme('pink')">
+                    <button class="btn btn-sm" [class.btn-primary]="currentTheme() === 'pink'"
+                        [class.btn-ghost]="currentTheme() !== 'pink'" (click)="setTheme('pink')">
                         <lucide-icon [img]="icons.Heart" class="w-4 h-4"></lucide-icon>
                         少女粉
                     </button>
-                    <button class="btn btn-sm" [class.btn-primary]="themeService.themeMode() === 'dark'"
-                        [class.btn-ghost]="themeService.themeMode() !== 'dark'" (click)="setTheme('dark')">
+                    <button class="btn btn-sm" [class.btn-primary]="currentTheme() === 'dark'"
+                        [class.btn-ghost]="currentTheme() !== 'dark'" (click)="setTheme('dark')">
                         <lucide-icon [img]="icons.Moon" class="w-4 h-4"></lucide-icon>
                         深色粉
                     </button>
-                    <button class="btn btn-sm" [class.btn-primary]="themeService.themeMode() === 'light'"
-                        [class.btn-ghost]="themeService.themeMode() !== 'light'" (click)="setTheme('light')">
+                    <button class="btn btn-sm" [class.btn-primary]="currentTheme() === 'light'"
+                        [class.btn-ghost]="currentTheme() !== 'light'" (click)="setTheme('light')">
                         <lucide-icon [img]="icons.Sun" class="w-4 h-4"></lucide-icon>
                         浅色
                     </button>
-                    <button class="btn btn-sm" [class.btn-primary]="themeService.themeMode() === 'system'"
-                        [class.btn-ghost]="themeService.themeMode() !== 'system'" (click)="setTheme('system')">
+                    <button class="btn btn-sm" [class.btn-primary]="currentTheme() === 'system'"
+                        [class.btn-ghost]="currentTheme() !== 'system'" (click)="setTheme('system')">
                         <lucide-icon [img]="icons.Monitor" class="w-4 h-4"></lucide-icon>
                         跟随系统
                     </button>

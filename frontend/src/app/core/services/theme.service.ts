@@ -10,8 +10,11 @@ export class ThemeService {
     readonly isDark = signal(false);
 
     constructor() {
-        this.applyTheme();
-        this.watchSystemTheme();
+        // 在构造函数中延迟执行，确保DOM准备好
+        setTimeout(() => {
+            this.applyTheme();
+            this.watchSystemTheme();
+        }, 0);
     }
 
     private loadTheme(): ThemeMode {
